@@ -25,6 +25,7 @@ class Point2DTest1 {
     @Test
     void compareTo() {
 
+        assertTrue(exmple1.get_x()==exmple2.get_x())&&exmple1.get_y()==exmple2.get_y();
         assertEquals(0,exmple1.compareTo(exmple2));
     }
 }
