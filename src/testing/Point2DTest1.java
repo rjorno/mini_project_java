@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Point2DTest1 {
-    Coordinate a=new Coordinate(5);
+    Coordinate a=new Coordinate(7);
     Coordinate b=new Coordinate(5);
 
     Point2D exmple1=new Point2D(a,b);
@@ -25,7 +25,7 @@ class Point2DTest1 {
     @Test
     void compareTo() {
 
-        assertTrue(exmple1.get_x()==exmple2.get_x())&&exmple1.get_y()==exmple2.get_y();
+        assertTrue(exmple1.get_x().getCoordiannte()==exmple2.get_x().getCoordiannte()&&exmple1.get_y().getCoordiannte()==exmple2.get_y().getCoordiannte());
         assertEquals(0,exmple1.compareTo(exmple2));
     }
 }
