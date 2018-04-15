@@ -11,7 +11,8 @@ class CoordinateTest {
     @Test
     void compareTo() {
 
-       assertEquals(temp.getCoordiannte(),temp1.getCoordiannte());
+        assertTrue(temp.getCoordiannte()==temp1.getCoordiannte());
+      // assertEquals(temp.getCoordiannte(),temp1.getCoordiannte());
 
     }
     @Test
