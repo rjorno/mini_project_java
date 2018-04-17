@@ -1,6 +1,7 @@
 package Geometris;
 import Primitives.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Plane {
@@ -27,7 +28,7 @@ public class Plane {
 
     public Vector getNormal(Point3D point){
 
-        return null;
+        return new Vector(_normal);
     }
     public Point3D getQ(){
 
@@ -42,7 +43,20 @@ public class Plane {
         this._Q=d;
     }
     public List<Point3D> FindIntersections(Ray ray){
-    return null;
+        List<Point3D>intersectionPoint=new ArrayList<Point3D>(1);
+        Point3D p0=ray.get_POO();
+        Point3D q0=getQ();
+        Vector v=new Vector(q0,p0);
+        Vector N=getNormal(null);
+        Vector D=ray.get_direction();
+        double t=(N.dotProduct(v)*-1)/N.dotProduct(D);
+        if (t==0)
+        {
+            D.scale(t);
+            p0.add(D);
+            intersectionPoint.add(p0);
+        }
+        return intersectionPoint;
     }
 
 }

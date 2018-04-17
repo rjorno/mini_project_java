@@ -18,6 +18,7 @@ public class Vector extends Exception {
     public Vector(double xHead, double yHead, double zHead){
         this._head=new Point3D(xHead,yHead,zHead);
     }
+
     public Vector(Point3D p1, Point3D p2){
         this(p2.get_x().getCoordiannte()-p1.get_x().getCoordiannte(),
                 p2.get_y().getCoordiannte()-p1.get_y().getCoordiannte(),
