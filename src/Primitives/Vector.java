@@ -71,7 +71,7 @@ public class Vector extends Exception {
 
         double length=this.length();
         if(length==0)
-            throw new Exception("Can not be divided by 0");
+            throw new Exception("You can not normalize the vector 0");
         this.set_head(new Point3D(this._head.get_x().getCoordiannte()/length,
                 this._head.get_y().getCoordiannte()/length,
                 this._head.get_z().getCoordiannte()/length));

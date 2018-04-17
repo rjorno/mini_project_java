@@ -3,9 +3,8 @@ package Primitives;
 public class Ray {
 
     private Point3D _POO;
-
     private Vector _direction;
-
+    // ***************** Constructors ********************** //
     public Ray(){
 
         this._POO=new Point3D();
@@ -20,7 +19,7 @@ public class Ray {
         this._POO=new Point3D(poo);
         this._direction=new Vector(direction);
     }
-
+    // ***************** Getters/Setters ********************** //
     public Point3D get_POO() {
         return _POO;
     }
