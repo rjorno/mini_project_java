@@ -3,7 +3,7 @@ import Primitives.*;
 import java.util.List;
 public interface  Geometry
 {
-     List<Point3D> FindIntersections (Ray ray);
+     List<Point3D> FindIntersections (Ray ray) throws Exception;
      //Vector getNormal(Point3D point);
 }
 /*public abstract class Geometry {

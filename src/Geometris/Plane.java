@@ -4,7 +4,7 @@ import Primitives.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Plane {
+public class Plane implements Geometry {
 
     private Vector _normal;
     private Point3D _Q;
