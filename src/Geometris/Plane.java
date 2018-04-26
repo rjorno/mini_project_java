@@ -4,7 +4,7 @@ import Primitives.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Plane {
+public class Plane  implements Geometry {
 
     private Vector _normal;
     private Point3D _Q;
@@ -45,12 +45,18 @@ public class Plane {
     public List<Point3D> FindIntersections(Ray ray){
         List<Point3D>intersectionPoint=new ArrayList<Point3D>(1);
         Point3D p0=ray.get_POO();
+
         Point3D q0=getQ();
         Vector v=new Vector(q0,p0);
         Vector N=getNormal(null);
         Vector D=ray.get_direction();
         double t=(N.dotProduct(v)*-1)/N.dotProduct(D);
-        if (t==0)
+         v.scale(t);
+         p0.add(v);
+        //Point3D p=new Point3D(p0);
+       // Vector temp=new Vector(q0,p);
+
+        if (t>=0)
         {
             D.scale(t);
             p0.add(D);
