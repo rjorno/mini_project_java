@@ -10,7 +10,7 @@ public class Coordinate implements Comparable<Coordinate>{
     }
 
     public Coordinate() {
-        this.coordiannte=0;
+        this.coordiannte=0.0;
     }
 
     public Coordinate(Coordinate coordiannte) {

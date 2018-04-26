@@ -1,11 +1,16 @@
 package Geometris;
 
-public class RadialGeometry {
+import Primitives.Point3D;
+import Primitives.Ray;
+
+import java.util.List;
+
+public class RadialGeometry implements Geometry {
 
     protected double _radius;
     public RadialGeometry(){
 
-        this._radius=0;
+        this._radius=0.0;
     }
     public RadialGeometry(double radius){
 
@@ -18,5 +23,10 @@ public class RadialGeometry {
     public void setRadius(double radius){
 
         this._radius=radius;
+    }
+
+
+    public List<Point3D> FindIntersections(Ray ray) throws Exception {
+        return null;
     }
 }
