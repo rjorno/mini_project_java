@@ -1,12 +1,9 @@
-package testing;
+package Testing.Geometris;
 
 import Geometris.*;
 import Primitives.Point3D;
-import Primitives.Ray;
 import Primitives.Vector;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 

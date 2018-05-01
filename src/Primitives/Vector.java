@@ -76,7 +76,6 @@ public class Vector extends Exception {
         this.set_head(new Point3D(this._head.get_x().getCoordiannte()/length,
                 this._head.get_y().getCoordiannte()/length,
                 this._head.get_z().getCoordiannte()/length));
-
     }
 
     public double dotProduct(Vector vector){
