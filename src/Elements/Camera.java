@@ -15,7 +15,7 @@ public class Camera {
     private Vector _vRight;
     // ***************** Constructors ********************** //
     public Camera(){
-        this._P0=new Point3D(0.0,0.0,10);
+        this._P0=new Point3D(0.0,0.0,0.0);
         this._vUp=new Vector(0.0,1.0,0.0);
         this._vTo=new Vector(0.0,0.0,-1.0);
         this._vRight=this._vTo.crossProduct(this._vUp);
@@ -30,12 +30,12 @@ public class Camera {
         this._P0=new Point3D(P0);
         this._vUp=new Vector(vUp);
         this._vTo=new Vector(vTo);
-        this._vRight=this._vUp.crossProduct(this._vTo);
+        this._vRight=this._vTo.crossProduct(this._vUp);
     }
     public Camera (Map<String, String> attributes){
 
     }
-// ***************** Getters/Setters ********************** //
+// ***************** Getters/Setters *********999999999999999999999999999999978************* //
 public Vector get_vUp(){
     return new Vector(this._vUp);
 }
@@ -55,7 +55,7 @@ public Vector get_vUp(){
         this._P0=new Point3D(P0);
     }
     public Vector get_vRight(){
-        return new Vector(this.get_vRight());
+        return new Vector(this._vRight);
     }
     // ***************** Administration ********************** //
     public String toString(){return null;}
@@ -65,13 +65,16 @@ public Vector get_vUp(){
                                          double screenDist,
                                          double screenWidth,
                                          double screenHeight){
+        //calculate the image center
         Point3D pc=new Point3D(this.getP0());
         Vector vTo=new Vector(this.get_vTo());
         vTo.scale(screenDist);
         pc.add(vTo);
+
+//calculate the rato
         double Rx=screenWidth/Nx;
         double Ry=screenHeight/Ny;
-
+//calculate the point intersection
         Point3D P=new Point3D(pc);
         Vector vRight=new Vector(this.get_vRight());
         Vector vUp=new Vector(this.get_vUp());

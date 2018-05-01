@@ -1,4 +1,4 @@
-package testing;
+package Testing.Primitives;
 
 import Primitives.Point3D;
 import Primitives.Vector;
