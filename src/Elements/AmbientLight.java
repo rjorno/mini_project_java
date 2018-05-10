@@ -29,6 +29,9 @@ public class AmbientLight {
     }
     public Color getIntensity()
     {
-        return null;
+
+        return new Color(((int)(this._color.getRGB()*this._Ka)));
+
+
     }
 }

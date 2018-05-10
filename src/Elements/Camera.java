@@ -95,8 +95,12 @@ public Vector get_vUp(){
         vRight.scale(((x-(Nx/2.0))*Rx + Rx/2.0));
         vUp.scale(((y-(Ny/2.0))*Ry+Ry/2.0));
 
+        vRight.subtract(vUp);
+
+
+
         P.add(vRight);
-        P.subtract(vUp);
+       //P.subtract(vUp);
 
         Vector v=new Vector(this.getP0(),P);
         v.normalize();

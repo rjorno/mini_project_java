@@ -6,6 +6,8 @@ import com.sun.javafx.sg.prism.NGNode;
 import javafx.scene.AmbientLight;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Scene {
     private String _sceneName = "scene";
@@ -67,8 +69,16 @@ public class Scene {
         this._screenDistance=screenDistance;
     }
     // ***************** Operations ******************** //
-    public void addGeometry(Geometry geometry);
-    //public Iterator<Geometry> getGeometriesIterator();
+    public void addGeometry(Geometry geometry)
+    {
+        _geometries.add(geometry);
+
+    }
+    public Iterator<Geometry> getGeometriesIterator(){
+
+       return  _geometries.iterator();
+
+    }
     //public void addLight(LightSource light);
     //public Iterator<LightSource> getLightsIterator();
 
