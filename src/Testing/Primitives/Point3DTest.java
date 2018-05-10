@@ -12,13 +12,13 @@ Vector temp2 = new Vector(3,4,5);
     @Test
     void add() {
         temp.add(temp2);
-    assertTrue(temp.get_x().getCoordiannte()==13&&temp.get_y().getCoordiannte()==24&&temp.get_z().getCoordiannte()==35);
+    assertTrue(temp.get_x().getCoordinate()==13&&temp.get_y().getCoordinate()==24&&temp.get_z().getCoordinate()==35);
     }
 
     @Test
     void subtract() {
         temp.subtract(temp2);
-        assertTrue(temp.get_x().getCoordiannte()==7&&temp.get_y().getCoordiannte()==16&&temp.get_z().getCoordiannte()==25);
+        assertTrue(temp.get_x().getCoordinate()==7&&temp.get_y().getCoordinate()==16&&temp.get_z().getCoordinate()==25);
     }
 
     @Test

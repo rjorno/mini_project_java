@@ -1,4 +1,4 @@
-package Geometris;
+package Geometries;
 import Primitives.*;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class Plane implements Geometry {
         this._normal=new Vector(plane._normal);
         this._Q=new Point3D(plane._Q);
     }
-    public Plane (Vector normal, Point3D q) throws Exception {
+    public Plane (Vector normal, Point3D q) {
         this._normal=new Vector(normal);
         this._normal.normalize();
         this._Q=new Point3D(q);
@@ -44,17 +44,25 @@ public class Plane implements Geometry {
     }
     public List<Point3D> FindIntersections(Ray ray){
         List<Point3D>intersectionPoint=new ArrayList<Point3D>(1);
-        Point3D p0=ray.get_POO();
-        Point3D q0=getQ();
-        Vector v=new Vector(q0,p0);
-        Vector N=getNormal(null);
-        Vector D=ray.get_direction();
-        double t=(N.dotProduct(v)*-1)/N.dotProduct(D);
-        if (t==0)
+        Point3D P=new Point3D();
+        Point3D P0=ray.get_POO();
+        Vector V=ray.get_direction();
+
+        Point3D Q0=this.getQ();
+        Vector N=this.getNormal(null);
+
+
+        Vector vector=new Vector(Q0,P0);
+        double t=(N.dotProduct(vector)*-1)/N.dotProduct(V);
+
+        V.scale(t);
+        P.add(V);
+
+
+        vector.add(V);
+        if (N.dotProduct(vector)==0)
         {
-            D.scale(t);
-            p0.add(D);
-            intersectionPoint.add(p0);
+            intersectionPoint.add(P);
         }
         return intersectionPoint;
     }

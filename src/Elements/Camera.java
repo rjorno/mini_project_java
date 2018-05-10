@@ -16,7 +16,7 @@ public class Camera {
     // ***************** Constructors ********************** //
     public Camera(){
         this._P0=new Point3D(0.0,0.0,0.0);
-        this._vUp=new Vector(0.0,1.0,0.0);
+        this._vUp=new Vector(0.0,-1.0,0.0);
         this._vTo=new Vector(0.0,0.0,-1.0);
         this._vRight=this._vTo.crossProduct(this._vUp);
     }
@@ -31,6 +31,14 @@ public class Camera {
         this._vUp=new Vector(vUp);
         this._vTo=new Vector(vTo);
         this._vRight=this._vTo.crossProduct(this._vUp);
+
+        if (this._vUp.dotProduct(this._vTo)!=0)
+        {
+            this._vUp=this._vTo.crossProduct(this._vRight);
+        }
+        this._vUp.normalize();
+        this._vTo.normalize();
+        this._vRight.normalize();
     }
     public Camera (Map<String, String> attributes){
 
@@ -58,7 +66,12 @@ public Vector get_vUp(){
         return new Vector(this._vRight);
     }
     // ***************** Administration ********************** //
-    public String toString(){return null;}
+
+    public String toString(){
+        return "Vto: "   + _vTo + "\n" +
+                "Vup: "   + _vUp + "\n" +
+                "Vright:" + _vRight + ".";
+    }
     // ***************** Operations ******************** //
     public Ray constructRayThroughPixel (int Nx, int Ny,
                                          double x, double y,
@@ -86,6 +99,7 @@ public Vector get_vUp(){
         P.subtract(vUp);
 
         Vector v=new Vector(this.getP0(),P);
+        v.normalize();
         Ray ray=new Ray(this.getP0(),v);
 
         return ray;

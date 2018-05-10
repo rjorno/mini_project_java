@@ -38,9 +38,9 @@ public class Point3D extends Point2D {
     }
 
     public String toString(){
-        return "(" + _x.getCoordiannte() + ", " +
-                _y.getCoordiannte() + ", " +
-                _z.getCoordiannte() + ")";
+        return "(" + _x.getCoordinate() + ", " +
+                _y.getCoordinate() + ", " +
+                _z.getCoordinate() + ")";
     }
     public void add(Vector vector){
         this._x.add(vector.get_head()._x);
@@ -54,9 +54,9 @@ public class Point3D extends Point2D {
 
     }
     public double distance(Point3D point){
-        return Math.sqrt(Math.pow(this._x.getCoordiannte()-point.get_x().getCoordiannte(),2)+
-        Math.pow(this._y.getCoordiannte()-point.get_y().getCoordiannte(),2)+
-        Math.pow(this._z.getCoordiannte()-point.get_z().getCoordiannte(),2));
+        return Math.sqrt(Math.pow(this._x.getCoordinate()-point.get_x().getCoordinate(),2)+
+        Math.pow(this._y.getCoordinate()-point.get_y().getCoordinate(),2)+
+        Math.pow(this._z.getCoordinate()-point.get_z().getCoordinate(),2));
 
     }
 }

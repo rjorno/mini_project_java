@@ -14,24 +14,24 @@ class VectorTest {
     @Test
     void add() {
         vec1.add(vec2);
-        assertTrue(vec1.get_head().get_x().getCoordiannte()==1&&vec1.get_head().get_y().getCoordiannte()==2
-        &&vec1.get_head().get_z().getCoordiannte()==3);
+        assertTrue(vec1.get_head().get_x().getCoordinate()==1&&vec1.get_head().get_y().getCoordinate()==2
+        &&vec1.get_head().get_z().getCoordinate()==3);
     }
 
     @Test
     void subtract() {
         vec1.subtract(vec2);
         vec2.subtract(vec1);
-        assertTrue(vec2.get_head().get_x().getCoordiannte()==-1&&vec2.get_head().get_y().getCoordiannte()==-2
-                &&vec2.get_head().get_z().getCoordiannte()==-3);
+        assertTrue(vec2.get_head().get_x().getCoordinate()==-1&&vec2.get_head().get_y().getCoordinate()==-2
+                &&vec2.get_head().get_z().getCoordinate()==-3);
     }
 
     @Test
     void scale() {
 
         vec2.scale(5);
-        assertTrue(vec2.get_head().get_x().getCoordiannte()==15&&vec2.get_head().get_y().getCoordiannte()==20
-                &&vec2.get_head().get_z().getCoordiannte()==25);
+        assertTrue(vec2.get_head().get_x().getCoordinate()==15&&vec2.get_head().get_y().getCoordinate()==20
+                &&vec2.get_head().get_z().getCoordinate()==25);
 
     }
 
@@ -39,8 +39,8 @@ class VectorTest {
     void crossProduct() {
 
       Vector vec3=new Vector( vec1.crossProduct(vec2)) ;
-        assertTrue(vec3.get_head().get_x().getCoordiannte()==0&&vec3.get_head().get_y().getCoordiannte()==0
-                &&vec3.get_head().get_z().getCoordiannte()==0);
+        assertTrue(vec3.get_head().get_x().getCoordinate()==0&&vec3.get_head().get_y().getCoordinate()==0
+                &&vec3.get_head().get_z().getCoordinate()==0);
 
 
     }

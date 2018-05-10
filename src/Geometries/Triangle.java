@@ -1,4 +1,4 @@
-package Geometris;
+package Geometries;
 
 import Primitives.Point3D;
 import Primitives.Ray;
@@ -71,7 +71,7 @@ public class Triangle implements Geometry {
         this._p3=p3;
     }
     // ***************** Operations ******************** //
-    public Vector getNormal(Point3D point) throws Exception {
+    public Vector getNormal(Point3D point)  {
         Vector v1=new Vector(this._p1,this._p2);
         Vector v2=new Vector(this._p1,this._p3);
         Vector v =new Vector( v1.crossProduct(v2));
@@ -80,7 +80,7 @@ public class Triangle implements Geometry {
         return v;
     }
     @Override
-    public List<Point3D> FindIntersections(Ray ray) throws Exception {
+    public List<Point3D> FindIntersections(Ray ray)  {
 
         List<Point3D> intersectionPoints = new ArrayList<Point3D>(1);
 
@@ -88,37 +88,37 @@ public class Triangle implements Geometry {
 
         Point3D P0 = ray.get_POO();
 
-        Vector N = getNormal(null);
+        Vector N = this.getNormal(null);
         Plane plane = new Plane(N, _p3);
 
         if (plane.FindIntersections(ray).isEmpty())
             return intersectionPoints;
 
+
         Point3D intersectionPlane = plane.FindIntersections(ray).get(0);
 
         // Checking if the interseculating point is bounded by the triangle
         Vector P_P0 = new Vector(P0, intersectionPlane);
-
         // Checking 1/3 triangular side
         Vector V1_1 = new Vector(P0, this._p1);
         Vector V2_1 = new Vector(P0, this._p2);
         Vector N1 = V1_1.crossProduct(V2_1);
         N1.normalize();
-        double S1 = -P_P0.dotProduct(N1);
+        double S1 = P_P0.dotProduct(N1);
 
         // Checking 2/3 triangular side
         Vector V1_2 = new Vector(P0, this._p2);
         Vector V2_2 = new Vector(P0, this._p3);
         Vector N2 = V1_2.crossProduct(V2_2);
         N2.normalize();
-        double S2 = -P_P0.dotProduct(N2);
+        double S2 = P_P0.dotProduct(N2);
 
         // Checking 1/3 triangular side
         Vector V1_3 = new Vector(P0, this._p3);
         Vector V2_3 = new Vector(P0, this._p1);
         Vector N3 = V1_3.crossProduct(V2_3);
         N3.normalize();
-        double S3 = -P_P0.dotProduct(N3);
+        double S3 = P_P0.dotProduct(N3);
 
         if (((S1 > 0) && (S2 > 0) && (S3 > 0)) ||
                 ((S1 < 0) && (S2 < 0) && (S3 < 0))){

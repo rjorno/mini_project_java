@@ -18,11 +18,11 @@ public class Coordinate implements Comparable<Coordinate>{
 
     }
     // ***************** Getters/Setters ********************** //
-    public double getCoordiannte() {
+    public double getCoordinate() {
         return coordiannte;
     }
 
-    public void setCoordiannte(double coordiannte) {
+    public void setCoordinate(double coordiannte) {
         this.coordiannte = coordiannte;
     }
 
