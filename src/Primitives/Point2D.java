@@ -51,8 +51,8 @@ public class Point2D {
 
     @Override
     public String toString() {
-        return "(" + _x.getCoordiannte() + ", " +
-                _y.getCoordiannte() + ")" ;
+        return "(" + _x.getCoordinate() + ", " +
+                _y.getCoordinate() + ")" ;
     }
 
 

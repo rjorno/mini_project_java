@@ -1,4 +1,4 @@
-package Geometris;
+package Geometries;
 import Primitives.*;
 import java.util.List;
 public interface  Geometry
@@ -10,7 +10,7 @@ public interface  Geometry
 
     private Material _material = new Material();
     private double _nShininess = 1;
-    private Color _emmission = new Color(0, 0, 0);
+ /*   private Color _emmission = new Color(0, 0, 0);
 
     public abstract List<Point3D> FindIntersections (Ray ray);
     public abstract Vector getNormal(Point3D point);

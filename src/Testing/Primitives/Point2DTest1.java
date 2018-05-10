@@ -16,7 +16,7 @@ class Point2DTest1 {
     @Test
     void compareTo() {
 
-        assertTrue(exmple1.get_x().getCoordiannte()==exmple2.get_x().getCoordiannte()&&exmple1.get_y().getCoordiannte()==exmple2.get_y().getCoordiannte());
+        assertTrue(exmple1.get_x().getCoordinate()==exmple2.get_x().getCoordinate()&&exmple1.get_y().getCoordinate()==exmple2.get_y().getCoordinate());
         assertEquals(0,exmple1.compareTo(exmple2));
     }
 }
