@@ -11,7 +11,7 @@ public class AmbientLight {
 
     }
     public AmbientLight(AmbientLight aLight){
-        this._color=new Color(1,1,1);
+        this._color=new Color(1, 1, 1);
     }
     public AmbientLight(int r, int g, int b){
         this._color=new Color(r,g,b);
@@ -19,19 +19,20 @@ public class AmbientLight {
     //public AmbientLight(Map<String, String> attributes);
     // ***************** Getters/Setters ********************** //
     public Color getColor(){
-        return new Color(this._color.getRGB());
+        return _color;
     }
     public void setColor(Color color) {
-        this._color=new Color(color.getRGB());
+        this._color=color;
     }
     public double getKa(){
         return _Ka;
     }
     public Color getIntensity()
     {
-
-        return new Color(((int)(this._color.getRGB()*this._Ka)));
-
+        return new Color(((int)(this._color.getRed()*this._Ka)),
+                ((int)(this._color.getGreen()*this._Ka)),
+                ((int)(this._color.getBlue()*this._Ka)));
+        //כגד
 
     }
 }
