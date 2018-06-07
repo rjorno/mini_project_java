@@ -30,49 +30,27 @@ public class Render
 
                 Ray ray = this._scene.getCamera().constructRayThroughPixel
                         (this._imageWriter.getNx(),this._imageWriter.getNy(),j,i,this._scene.getScreenDistance(),this._imageWriter.getWidth(),this._imageWriter.getHeight());
-                List<Point3D> intersectionPoints =
+                Map<Geometry, List<Point3D>>  intersectionPoints =
                         getSceneRayIntersections(ray);
                 if (intersectionPoints.isEmpty())
                     this._imageWriter.writePixel(j, i, this._scene.getBackground());
                 else {
-                    Point3D closestPoint = getClosestPoint(intersectionPoints);
-                    _imageWriter.writePixel(j, i, calcColor(closestPoint));
+                    Map<Geometry, Point3D> closestPoint = getClosestPoint(intersectionPoints);
+                    Entry<Geometry, Point3D> entry = closestPoint.entrySet().iterator().next();
+                    _imageWriter.writePixel(j, i, calcColor(entry.getKey(),entry.getValue()));
                 }
             }
         }
     }
 
 
-    private List<Point3D> getSceneRayIntersections(Ray ray) {
-        Iterator<Geometry> geometries = _scene.getGeometriesIterator();
-        List<Point3D> intersectionPoints = new ArrayList<Point3D>();
-
-        while (geometries.hasNext()) {
-            Geometry geometry = geometries.next();
-            List<Point3D> geometryIntersectionPoints =
-                    geometry.FindIntersections(ray);
-                intersectionPoints.addAll(geometryIntersectionPoints);
-        }
-        return intersectionPoints;
-    }
-
-
-
-    private Point3D getClosestPoint(List<Point3D> intersectionPoints) {
-        double distance = Double.MAX_VALUE;
-        Point3D P0 = this ._scene.getCamera().getP0();
-        Point3D minDistancePoint = null;
-        for (Point3D point: intersectionPoints) {
-            if (P0.distance(point) < distance){
-                minDistancePoint = new Point3D(point);
-                distance = P0.distance(point);
-            }
-        }
-        return minDistancePoint;
-    }
-
-    private Color calcColor(Point3D point) {
-        return _scene.getAmbientLight().getIntensity();
+    private Color calcColor(Geometry geometry, Point3D point) {
+        Color ambientLight = _scene.getAmbientLight().getIntensity(point);
+        Color emissionLight = geometry.getEmmission();
+        Color I0 = new Color (ambientLight.getRed() + emissionLight.getRed(),
+                ambientLight.getGreen() + emissionLight.getGreen(),
+                ambientLight.getBlue() + emissionLight.getBlue());
+        return I0;
     }
 
 
@@ -83,8 +61,8 @@ public class Render
 
 
 
-
-  /*  public void renderImage(){
+/*0
+    public void renderImage(){
         for (int i = 0;i<this._imageWriter.getNx();i++){
             for (int j=0;j<this._imageWriter.getNy();j++){
 
@@ -94,7 +72,7 @@ public class Render
                 if (geometryPoint3DEntry==null)
                     this._imageWriter.writePixel(i, j, this._scene.getBackground());
                 else {
-                    this._imageWriter.writePixel(i,j,calcColor(geometryPoint3DEntry.getKey(),geometryPoint3DEntry.getValue(),ray));
+                    this._imageWriter.writePixel(i,j,calcColor(geometryPoint3DEntry.getKey(),geometryPoint3DEntry.getValue()));
                 }
             }
         }
@@ -107,7 +85,7 @@ public class Render
         Entry<Geometry, Point3D> entry = mapClosestPoint.entrySet().iterator().next();
         return entry;
     }
-    */
+*/
     public void printGrid(int interval){
 
         int height = _imageWriter.getHeight();
@@ -125,7 +103,7 @@ public class Render
     public void writeToImage(){
         _imageWriter.writeToimage();
     }
-    private Color calcColor(Geometry geometry, Point3D point, Ray ray){
+  /*  private Color calcColor(Geometry geometry, Point3D point, Ray ray){
         return null;
     }
     private Color calcColor(Geometry geometry, Point3D point,Ray inRay, int level){
@@ -147,12 +125,12 @@ public class Render
     private Color calcDiffusiveComp(double kd, Vector normal, Vector l, Color lightIntensity){
         return null;
     }
-    /*
+
     private Map<Geometry, List<Point3D>> getSceneRayIntersections(Ray ray)
     {
         Map<Geometry, List<Point3D>> intersectionPoints=new HashMap<Geometry, List<Point3D>>();
         Iterator<Geometry> geometries = _scene.getGeometriesIterator();
-        List<Point3D> intersectionPoints1 = new ArrayList<Point3D>();
+        //List<Point3D> intersectionPoints1 = new ArrayList<Point3D>();
 
         while (geometries.hasNext()) {
             Geometry geometry = geometries.next();
@@ -169,6 +147,7 @@ public class Render
         double distance = Double.MAX_VALUE;
         Point3D P0 = this ._scene.getCamera().getP0();
         Map<Geometry, Point3D> minDistancePoint = new HashMap<Geometry,Point3D>();
+
         for (Entry<Geometry,List<Point3D>> mapIntersection:intersectionPoints.entrySet()) {
             for (Point3D point : mapIntersection.getValue())
                 if (P0.distance(point) < distance){
@@ -179,8 +158,8 @@ public class Render
         }
         return minDistancePoint;
     }
-    */
+/*
     private Color addColors(Color a, Color b){
         return null;
-    }
+    }*/
 }
