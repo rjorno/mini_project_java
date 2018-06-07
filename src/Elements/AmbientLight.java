@@ -3,7 +3,7 @@ package Elements;
 import java.awt.*;
 
 public class AmbientLight extends Light {
-    private final double _Ka = 0.1;
+    private final double _Ka = 0.7;
 
     // ***************** Constructors ********************** //
     public AmbientLight(){
