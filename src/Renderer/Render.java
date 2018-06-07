@@ -5,6 +5,7 @@ import java.util.Map.Entry;
 import java.util.function.Consumer;
 //import Elements.LightSource;
 //import Geometries.FlatGeometry;
+import Elements.LightSource;
 import Geometries.Geometry;
 import Primitives.Point3D;
 import Primitives.Ray;
@@ -45,12 +46,32 @@ public class Render
 
 
     private Color calcColor(Geometry geometry, Point3D point) {
-        Color ambientLight = _scene.getAmbientLight().getIntensity(point);
+        Color ambientLight = _scene.getAmbientLight().getIntensity();
         Color emissionLight = geometry.getEmmission();
         Color I0 = new Color (ambientLight.getRed() + emissionLight.getRed(),
                 ambientLight.getGreen() + emissionLight.getGreen(),
                 ambientLight.getBlue() + emissionLight.getBlue());
         return I0;
+
+
+        Iterator<LightSource> lights = _scene.getLightsIterator();
+        Color diffuseLight;
+        Color specularLight;
+        while (lights.hasNext()){
+            diffuseLight += calcDiffusiveComp(geometry.getMaterial().get_Kd(),
+                    geometry.getNormal(point),
+                    light.getL(point),
+                    lightIntensity);
+            specularLight += calcSpecularComp(geometry.material.Ks,
+                    new Vector(point, _scene.
+                            getCamera().getP0()),
+                    geometry.getNormal(point),
+                    light.getL(point),
+                    geometry.getShininess(),
+                    lightIntensity);
+        }
+        return new Color(ambientLight + emissionLight + diffuseLight + specularLight)
+
     }
 
 
@@ -61,31 +82,31 @@ public class Render
 
 
 
-/*0
-    public void renderImage(){
-        for (int i = 0;i<this._imageWriter.getNx();i++){
-            for (int j=0;j<this._imageWriter.getNy();j++){
+    /*0
+        public void renderImage(){
+            for (int i = 0;i<this._imageWriter.getNx();i++){
+                for (int j=0;j<this._imageWriter.getNy();j++){
 
-                Ray ray = this._scene.getCamera().constructRayThroughPixel
-                        (this._imageWriter.getNx(),this._imageWriter.getNy(),i,j,this._scene.getScreenDistance(),this._imageWriter.getWidth(),this._imageWriter.getHeight());
-                Entry<Geometry,Point3D> geometryPoint3DEntry =findClosesntIntersection(ray);
-                if (geometryPoint3DEntry==null)
-                    this._imageWriter.writePixel(i, j, this._scene.getBackground());
-                else {
-                    this._imageWriter.writePixel(i,j,calcColor(geometryPoint3DEntry.getKey(),geometryPoint3DEntry.getValue()));
+                    Ray ray = this._scene.getCamera().constructRayThroughPixel
+                            (this._imageWriter.getNx(),this._imageWriter.getNy(),i,j,this._scene.getScreenDistance(),this._imageWriter.getWidth(),this._imageWriter.getHeight());
+                    Entry<Geometry,Point3D> geometryPoint3DEntry =findClosesntIntersection(ray);
+                    if (geometryPoint3DEntry==null)
+                        this._imageWriter.writePixel(i, j, this._scene.getBackground());
+                    else {
+                        this._imageWriter.writePixel(i,j,calcColor(geometryPoint3DEntry.getKey(),geometryPoint3DEntry.getValue()));
+                    }
                 }
             }
         }
-    }
 
-    private Entry<Geometry, Point3D> findClosesntIntersection(Ray ray){
-        Map<Geometry, List<Point3D>> intersectionPoints=getSceneRayIntersections(ray);
-        if (intersectionPoints.isEmpty()) return null;
-        Map<Geometry, Point3D> mapClosestPoint = getClosestPoint(intersectionPoints);
-        Entry<Geometry, Point3D> entry = mapClosestPoint.entrySet().iterator().next();
-        return entry;
-    }
-*/
+        private Entry<Geometry, Point3D> findClosesntIntersection(Ray ray){
+            Map<Geometry, List<Point3D>> intersectionPoints=getSceneRayIntersections(ray);
+            if (intersectionPoints.isEmpty()) return null;
+            Map<Geometry, Point3D> mapClosestPoint = getClosestPoint(intersectionPoints);
+            Entry<Geometry, Point3D> entry = mapClosestPoint.entrySet().iterator().next();
+            return entry;
+        }
+    */
     public void printGrid(int interval){
 
         int height = _imageWriter.getHeight();
@@ -103,34 +124,51 @@ public class Render
     public void writeToImage(){
         _imageWriter.writeToimage();
     }
-  /*  private Color calcColor(Geometry geometry, Point3D point, Ray ray){
-        return null;
-    }
-    private Color calcColor(Geometry geometry, Point3D point,Ray inRay, int level){
-        return null;
-    }
-    // Recursive
-    private Ray constructRefractedRay(Geometry geometry, Point3D point,Ray inRay){
-        return null;
-    }
-    private Ray constructReflectedRay(Vector normal, Point3D point,Ray inRay){
-        return null;
-    }
-  /*  private boolean occluded(LightSource light, Point3D point,Geometry geometry){
-        return false;
-    }*/
+    /*  private Color calcColor(Geometry geometry, Point3D point, Ray ray){
+          return null;
+      }
+      private Color calcColor(Geometry geometry, Point3D point,Ray inRay, int level){
+          return null;
+      }
+      // Recursive
+      private Ray constructRefractedRay(Geometry geometry, Point3D point,Ray inRay){
+          return null;
+      }
+      private Ray constructReflectedRay(Vector normal, Point3D point,Ray inRay){
+          return null;
+      }
+    /*  private boolean occluded(LightSource light, Point3D point,Geometry geometry){
+          return false;
+      }*/
     private Color calcSpecularComp(double ks, Vector v, Vector normal,Vector l, double shininess, Color lightIntensity){
-        return null;
+        Vector V=new Vector(v);
+        Vector N =new Vector(normal);
+        Vector L=new Vector(l);
+
+        double temp=L.dotProduct(N);
+        temp*=-2;
+        N.scale(temp);
+        Vector R =new Vector(L);
+        R.subtract(N);
+
+        double Shin=Math.pow(V.dotProduct(R),shininess)*ks;
+        return new Color((int)(lightIntensity.getRed()*Shin),
+                (int)(lightIntensity.getGreen()*Shin),
+                (int)(lightIntensity.getBlue()*Shin));
     }
     private Color calcDiffusiveComp(double kd, Vector normal, Vector l, Color lightIntensity){
-        return null;
+        Vector N=new Vector(normal);
+        Vector L=new Vector(l);
+        double d=kd*N.dotProduct(L);
+        return new Color((int)(lightIntensity.getRed()*d),
+                (int)(lightIntensity.getGreen()*d),
+                (int)(lightIntensity.getBlue()*d));
     }
 
     private Map<Geometry, List<Point3D>> getSceneRayIntersections(Ray ray)
     {
         Map<Geometry, List<Point3D>> intersectionPoints=new HashMap<Geometry, List<Point3D>>();
         Iterator<Geometry> geometries = _scene.getGeometriesIterator();
-        //List<Point3D> intersectionPoints1 = new ArrayList<Point3D>();
 
         while (geometries.hasNext()) {
             Geometry geometry = geometries.next();

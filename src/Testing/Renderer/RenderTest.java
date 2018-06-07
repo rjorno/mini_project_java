@@ -24,7 +24,6 @@ import java.util.Iterator;
       Triangle triangle = new Triangle(new Point3D( 100, 0, -149),
                 new Point3D(  0, 100, -149),
                 new Point3D( 100, 100, -149));
-      triangle.setEmmission(Color.gray);
 
         Triangle triangle2 = new Triangle(new Point3D( 100, 0, -149),
                 new Point3D(  0, -100, -149),

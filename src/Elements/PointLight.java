@@ -6,7 +6,7 @@ import java.awt.*;
 
 import static java.lang.Math.pow;
 
-public class PointLight extends Light {
+public class PointLight extends Light implements LightSource {
 
     private   Point3D _position;
     private double _Kc, _Kl, _Kq;

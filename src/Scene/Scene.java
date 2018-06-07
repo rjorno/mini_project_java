@@ -1,8 +1,8 @@
 package Scene;
 
 import Elements.Camera;
+import Elements.LightSource;
 import Geometries.Geometry;
-import com.sun.javafx.sg.prism.NGNode;
 import Elements.AmbientLight;
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class Scene {
     private List<Geometry> _geometries = new ArrayList<Geometry>();
     private Camera _camera;
     private double _screenDistance;
-    //private List<LightSource> _lights = new ArrayList<LightSource>();
+    private List<LightSource> _lights = new ArrayList<LightSource>();
     // ***************** Constructors ********************** //
     public Scene(){
         this._ambientLight=new AmbientLight();
@@ -79,7 +79,11 @@ public class Scene {
     {
         return _geometries.iterator();
     }
-    //public void addLight(LightSource light);
-    //public Iterator<LightSource> getLightsIterator();
+    public void addLight(LightSource light){
+        this._lights.add(light);
+    }
+    public Iterator<LightSource> getLightsIterator(){
+        return this._lights.iterator();
+    }
 
 }
