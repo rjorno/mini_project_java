@@ -2,19 +2,21 @@ package Elements;
 
 import java.awt.*;
 
-public class AmbientLight {
+public class AmbientLight extends Light {
     private final double _Ka = 0.1;
-    private Color _color;
-
+    
     // ***************** Constructors ********************** //
     public AmbientLight(){
-
+        super (new Color(255,255,255));
     }
     public AmbientLight(AmbientLight aLight){
-        this._color=new Color(1, 1, 1);
+
+        super(aLight._color);
     }
+    //
     public AmbientLight(int r, int g, int b){
-        this._color=new Color(r,g,b);
+
+        super(new Color(r,g,b));
     }
     //public AmbientLight(Map<String, String> attributes);
     // ***************** Getters/Setters ********************** //
@@ -27,12 +29,13 @@ public class AmbientLight {
     public double getKa(){
         return _Ka;
     }
+    @Override
     public Color getIntensity()
     {
         return new Color(((int)(this._color.getRed()*this._Ka)),
                 ((int)(this._color.getGreen()*this._Ka)),
                 ((int)(this._color.getBlue()*this._Ka)));
-        //כגד
+
 
     }
 }
