@@ -124,7 +124,12 @@ public class Triangle implements Geometry {
                 ((S1 < 0) && (S2 < 0) && (S3 < 0))){
             intersectionPoints.add(intersectionPlane);
         }
-
+        //System.out.println(intersectionPoints);
         return intersectionPoints;
+    }
+
+    @Override
+    public String toString() {
+        return _p1+" "+_p2+" "+_p3;
     }
 }

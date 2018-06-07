@@ -56,7 +56,7 @@ public class Sphere extends RadialGeometry {
     }
 
     @Override
-    public List<Point3D> FindIntersections(Ray ray) throws Exception {
+    public List<Point3D> FindIntersections(Ray ray) {
         List<Point3D> intersections = new ArrayList<Point3D>(2);
 
         Point3D P0 = new Point3D(ray.get_POO());
@@ -97,6 +97,7 @@ public class Sphere extends RadialGeometry {
                 p2.add(v2);
                 intersections.add(p2);
             }
+            System.out.println(intersections);
             return intersections;
 
         }

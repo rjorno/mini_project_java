@@ -16,7 +16,7 @@ public class Camera {
     // ***************** Constructors ********************** //
     public Camera(){
         this._P0=new Point3D(0.0,0.0,0.0);
-        this._vUp=new Vector(0.0,-1.0,0.0);
+        this._vUp=new Vector(0.0,1.0,0.0);
         this._vTo=new Vector(0.0,0.0,-1.0);
         this._vRight=this._vTo.crossProduct(this._vUp);
     }

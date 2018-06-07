@@ -25,8 +25,7 @@ public class RadialGeometry implements Geometry {
         this._radius=radius;
     }
 
-
-    public List<Point3D> FindIntersections(Ray ray) throws Exception {
+    public List<Point3D> FindIntersections(Ray ray){
         return null;
     }
 }

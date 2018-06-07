@@ -3,7 +3,7 @@ package Scene;
 import Elements.Camera;
 import Geometries.Geometry;
 import com.sun.javafx.sg.prism.NGNode;
-import javafx.scene.AmbientLight;
+import Elements.AmbientLight;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,17 +22,19 @@ public class Scene {
         this._ambientLight=new AmbientLight();
         this._background=new Color(0,0,0);
         this._camera=new Camera();
-        this._screenDistance=0;
+        this._screenDistance=100;
     }
     public Scene(Scene scene){
-        this._ambientLight=new AmbientLight(scene._ambientLight.getColor());
-        this._background=new Color(scene._background.getRGB());
+        this._sceneName=scene._sceneName;
+        this._ambientLight=new AmbientLight(scene._ambientLight);
+        this._background=new Color(scene._background.getRed(),scene._background.getGreen(),scene._background.getBlue());
         this._camera=new Camera(scene._camera);
         this._screenDistance=scene._screenDistance;
+        _geometries=new ArrayList<Geometry>(scene._geometries);
     }
     public Scene(AmbientLight aLight, Color background,
                  Camera camera, double screenDistance){
-        this._ambientLight=new AmbientLight(aLight.getColor());
+        this._ambientLight=new AmbientLight(aLight);
         this._background=new Color(background.getRGB());
         this._camera=new Camera(camera);
         this._screenDistance=screenDistance;
@@ -42,7 +44,7 @@ public class Scene {
         return new Color(this._background.getRGB());
     }
     public AmbientLight getAmbientLight(){
-        return new AmbientLight(this._ambientLight.getColor());
+        return new AmbientLight(this._ambientLight);
     }
     public Camera getCamera(){
         return new Camera(this._camera);
@@ -57,7 +59,7 @@ public class Scene {
         this._background=new Color(background.getRGB());
     }
     public void setAmbientLight(AmbientLight ambientLight){
-        this._ambientLight=new AmbientLight(ambientLight.getColor());
+        this._ambientLight=new AmbientLight(ambientLight);
     }
     public void setCamera(Camera camera){
         this._camera=new Camera(camera);

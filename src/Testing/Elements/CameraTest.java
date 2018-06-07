@@ -14,7 +14,7 @@ class CameraTest {
     void constructRayThroughPixel() {
         assertEquals(-1,new Camera(new Camera(new Point3D(),new Vector(0,-1,0),new Vector(0,0,-1))).get_vRight().get_head().get_x().getCoordinate());
         assertEquals(-1,new Camera(new Point3D(),new Vector(0,-1,0),new Vector(0,0,-1)).get_vRight().get_head().get_x().getCoordinate());
-        assertEquals(-1,new Camera(new Camera()).get_vRight().get_head().get_x().getCoordinate());
+        assertEquals(1,new Camera(new Camera()).get_vRight().get_head().get_x().getCoordinate());
 
 
         assertEquals(0,new Camera().constructRayThroughPixel(3,3,0,0,1,9,9).get_POO().get_x().getCoordinate());

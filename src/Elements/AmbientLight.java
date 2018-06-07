@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class AmbientLight extends Light {
     private final double _Ka = 0.1;
-    
+
     // ***************** Constructors ********************** //
     public AmbientLight(){
         super (new Color(255,255,255));
