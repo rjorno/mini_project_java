@@ -4,26 +4,26 @@ package Primitives;
 public class Material {
 
     private double _Ks;
-    private double _Kr;
-    private double _Kt;
-    private double _n;
+  //  private double _Kr;
+    //private double _Kt;
+    private double _nShininess;
     private double _Kd;
 
     public Material()
     {
         _Kd = 1;
         _Ks = 1;
-        _Kr = 0;
-        _Kt = 0;
-        _n = 1;
+    //    _Kr = 0;
+     //   _Kt = 0;
+        _nShininess = 1;
     }
 
     public Material(Material material){
         this._Kd=material._Kd;
-        this._Kr=material._Kr;
+        //this._Kr=material._Kr;
         this._Ks=material._Ks;
-        this._Kt=material._Kt;
-        this._n=material._n;
+        //this._Kt=material._Kt;
+        this._nShininess=material._nShininess;
 
     }
 
@@ -34,7 +34,7 @@ public class Material {
     public void set_Ks(double _Ks) {
         this._Ks = _Ks;
     }
-
+/*
     public double get_Kr() {
         return _Kr;
     }
@@ -50,13 +50,13 @@ public class Material {
     public void set_Kt(double _Kt) {
         this._Kt = _Kt;
     }
-
+*/
     public double get_n() {
-        return _n;
+        return this._nShininess;
     }
 
-    public void set_n(double _n) {
-        this._n = _n;
+    public void set_n(double _nShininess) {
+        this._nShininess = _nShininess;
     }
 
     public double get_Kd() {

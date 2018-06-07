@@ -2,10 +2,11 @@ package Geometries;
 
 import Primitives.Point3D;
 import Primitives.Ray;
+import Primitives.Vector;
 
 import java.util.List;
 
-public class RadialGeometry implements Geometry {
+public class RadialGeometry extends Geometry {
 
     protected double _radius;
     public RadialGeometry(){
@@ -28,4 +29,6 @@ public class RadialGeometry implements Geometry {
     public List<Point3D> FindIntersections(Ray ray){
         return null;
     }
+
+    public Vector getNormal(Point3D point){return null;}
 }

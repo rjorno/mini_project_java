@@ -75,9 +75,9 @@ public class Vector extends Exception {
 
     public double length() {
 
-        return Math.sqrt(Math.pow(this._head._x.getCoordinate(), 2) +
-                Math.pow(this._head._y.getCoordinate(), 2) +
-                Math.pow(this._head._z.getCoordinate(), 2));
+        return Math.sqrt(this._head._x.getCoordinate()*this._head._x.getCoordinate() +
+                this._head._y.getCoordinate()*this._head._y.getCoordinate() +
+                this._head._z.getCoordinate()*this._head._z.getCoordinate());
     }
 
     public void normalize() {

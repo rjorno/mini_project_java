@@ -22,7 +22,7 @@ public class Scene {
         this._ambientLight=new AmbientLight();
         this._background=new Color(0,0,0);
         this._camera=new Camera();
-        this._screenDistance=50;
+        this._screenDistance=150;
     }
     public Scene(Scene scene){
         this._sceneName=scene._sceneName;

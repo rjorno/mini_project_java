@@ -4,7 +4,7 @@ import Primitives.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Plane implements Geometry {
+public class Plane extends Geometry {
 
     private Vector _normal;
     private Point3D _Q;
@@ -25,9 +25,8 @@ public class Plane implements Geometry {
         this._Q=new Point3D(q);
 
     }
-
+    @Override
     public Vector getNormal(Point3D point){
-
         return new Vector(_normal);
     }
     public Point3D getQ(){

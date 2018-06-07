@@ -48,8 +48,8 @@ public class Sphere extends RadialGeometry {
         this._center = new Point3D(center);
     }
     // ***************** Operations ******************** //
-
-    public Vector getNormal(Point3D point) throws Exception {
+    @Override
+    public Vector getNormal(Point3D point)  {
         Vector v = new Vector(_center, point);
         v.normalize();
         return v;
@@ -97,7 +97,7 @@ public class Sphere extends RadialGeometry {
                 p2.add(v2);
                 intersections.add(p2);
             }
-            System.out.println(intersections);
+           // System.out.println(intersections);
             return intersections;
 
         }

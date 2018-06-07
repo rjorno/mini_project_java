@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Triangle implements Geometry {
+public class Triangle extends Geometry {
     private Point3D _p1;
     private Point3D _p2;
     private Point3D _p3;
@@ -71,6 +71,7 @@ public class Triangle implements Geometry {
         this._p3=p3;
     }
     // ***************** Operations ******************** //
+    @Override
     public Vector getNormal(Point3D point)  {
         Vector v1=new Vector(this._p1,this._p2);
         Vector v2=new Vector(this._p1,this._p3);
