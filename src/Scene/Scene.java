@@ -30,7 +30,8 @@ public class Scene {
         this._background=new Color(scene._background.getRed(),scene._background.getGreen(),scene._background.getBlue());
         this._camera=new Camera(scene._camera);
         this._screenDistance=scene._screenDistance;
-        _geometries=new ArrayList<Geometry>(scene._geometries);
+        this._geometries=new ArrayList<Geometry>(scene._geometries);
+        this._lights=new ArrayList<LightSource>(scene._lights);
     }
     public Scene(AmbientLight aLight, Color background,
                  Camera camera, double screenDistance){
@@ -79,11 +80,8 @@ public class Scene {
     {
         return _geometries.iterator();
     }
-    public void addLight(LightSource light){
-        this._lights.add(light);
-    }
+    public void addLight(LightSource light){ this._lights.add(light); }
     public Iterator<LightSource> getLightsIterator(){
         return this._lights.iterator();
     }
-
 }

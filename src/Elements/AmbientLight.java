@@ -15,7 +15,6 @@ public class AmbientLight extends Light {
     }
     //
     public AmbientLight(int r, int g, int b){
-
         super(new Color(r,g,b));
     }
     //public AmbientLight(Map<String, String> attributes);
@@ -32,10 +31,12 @@ public class AmbientLight extends Light {
     @Override
     public Color getIntensity()
     {
-        return new Color(((int)(this._color.getRed()*this._Ka)),
+      //  return new Color((int)(this.getColor().getRGB()*getKa()));
+       return new Color(((int)(this._color.getRed()*this._Ka)),
                 ((int)(this._color.getGreen()*this._Ka)),
                 ((int)(this._color.getBlue()*this._Ka)));
 
 
     }
+
 }

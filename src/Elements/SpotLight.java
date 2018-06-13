@@ -12,6 +12,7 @@ public class SpotLight extends  PointLight {
                      double kc, double kl, double kq){
         super(color,position,kc,kl,kq);
         this._direction=new Vector(direction);
+        this._direction.normalize();
     }
 
     // ***************** Getters/Setters ********************** //
@@ -22,7 +23,8 @@ public class SpotLight extends  PointLight {
         Vector l = super.getL(point);
         l.normalize();
         this._direction.normalize();
-        double angle = l.dotProduct(this._direction);
+        double angle = Math.abs( l.dotProduct(this._direction));
+        if (angle > 1) angle = 1; // doesn't allow light magnification
 
         return new Color((int) (color.getRed() * angle),
                 (int) (color.getGreen() * angle),

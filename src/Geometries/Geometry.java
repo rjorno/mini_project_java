@@ -11,20 +11,24 @@ import java.util.List;
 public abstract class Geometry {
 
     private Material _material = new Material();
-   // private double _nShininess = 1;
+  //  private double _nShininess = 1;
     private Color _emmission = new Color(0, 0, 0);
 
     public abstract List<Point3D> FindIntersections (Ray ray);
     public abstract Vector getNormal(Point3D point);
 
-    //public double getShininess();
+    public double getShininess(){
+        return this._material.get_n();
+    }
     public Material getMaterial(){
          return new Material(this._material);
     }
     public Color getEmmission(){return this._emmission;}
-    //public void setShininess(double n)
-    public void setMaterial(Material _material){
-         this._material=new Material(_material);
+    public void setShininess(double n){
+        this._material.set_n(n);
+    }
+    public void setMaterial(Material material){
+         this._material=new Material(material);
     }
     public void setEmmission(Color emmission){
          this._emmission=new Color(
