@@ -23,7 +23,6 @@ public class PointLight extends Light implements LightSource {
     // ***************** Getters/Setters ********************** //
     @Override
     public Color getIntensity(Point3D point){
-
         int red=this._color.getRed();
         int green=this._color.getGreen();
         int blue=this._color.getBlue();

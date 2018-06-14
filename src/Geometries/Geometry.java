@@ -36,12 +36,12 @@ public abstract class Geometry {
                  emmission.getGreen(),
                  emmission.getBlue());}
     public void setKs(double ks){
-         this._material.set_Ks(ks);
+         this.getMaterial().set_Ks(ks);
     }
     public void setKd(double kd){
          this._material.set_Kd(kd);
     }
-    //public void setKr(double Kr);
-    //public void setKt(double Kt);
+    public void setKr(double Kr){this.getMaterial().set_Kr(Kr);}
+    public void setKt(double Kt){this.getMaterial().set_Kt(Kt);}
 
 }
