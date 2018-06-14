@@ -95,7 +95,6 @@ public class Render
                         geometry.getNormal(point),
                         light.getL(point),
                         lightIntensity);
-                // diffuseLight=addColors(diffuseLight,lightDiffuse);
                 Color lightSpecular = calcSpecularComp(geometry.getMaterial().get_Ks(),
                         new Vector(point, _scene.
                                 getCamera().getP0()),
@@ -103,7 +102,6 @@ public class Render
                         light.getL(point),
                         geometry.getShininess(),
                         lightIntensity);
-                // specularLight=addColors(specularLight,lightSpecular);
                 Color lightRef = addColors(lightDiffuse, lightSpecular);
                 diffuseAndSpecular = addColors(diffuseAndSpecular, lightRef);
             }
@@ -167,7 +165,8 @@ public class Render
 
         Ray reflectedRay = new Ray(point, R);
 
-        return reflectedRay;    }
+        return reflectedRay;
+    }
     private boolean occluded(LightSource light, Point3D point,Geometry geometry){
         Vector lightDirection = light.getL(point);
         lightDirection.scale(-1);
