@@ -1,3 +1,4 @@
+/*
 package Testing.Primitives;
 
 import Primitives.Point3D;
@@ -26,4 +27,4 @@ Vector temp2 = new Vector(3,4,5);
         assertEquals(0,temp.distance(temp));
         assertEquals(30.49,temp.distance(temp2.get_head()),0.05);
     }
-}
+}*/

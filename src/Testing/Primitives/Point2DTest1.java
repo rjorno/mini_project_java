@@ -1,3 +1,4 @@
+/*
 package Testing.Primitives;
 import Primitives.Coordinate;
 import Primitives.Point2D;
@@ -19,4 +20,4 @@ class Point2DTest1 {
         assertTrue(exmple1.get_x().getCoordinate()==exmple2.get_x().getCoordinate()&&exmple1.get_y().getCoordinate()==exmple2.get_y().getCoordinate());
         assertEquals(0,exmple1.compareTo(exmple2));
     }
-}
+}*/

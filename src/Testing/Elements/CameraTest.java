@@ -1,3 +1,4 @@
+/*
 package Testing.Elements;
 
 import Elements.Camera;
@@ -51,4 +52,4 @@ class CameraTest {
             }
         }
     }
-}
+}*/

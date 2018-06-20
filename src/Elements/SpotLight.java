@@ -2,7 +2,8 @@ package Elements;
 
 import Primitives.*;
 
-import java.awt.*;
+import java.awt.Color;
+
 
 public class SpotLight extends  PointLight {
 
@@ -22,11 +23,12 @@ public class SpotLight extends  PointLight {
         Color color = super.getIntensity(point);
         Vector l = super.getL(point);
         l.normalize();
-        this._direction.normalize();
-        double angle = Math.abs( l.dotProduct(this._direction));
+        //this._direction.normalize();
+        double angle = Math.abs(this._direction.dotProduct(l));
         if (angle > 1) angle = 1; // doesn't allow light magnification
 
-        return new Color((int) (color.getRed() * angle),
+        return new Color(
+                (int) (color.getRed() * angle),
                 (int) (color.getGreen() * angle),
                 (int) (color.getBlue() * angle));
     }

@@ -1,9 +1,8 @@
 package Elements;
 
 import Primitives.*;
+import java.awt.Color;
 
-
-import java.awt.*;
 
   public abstract class   Light extends Exception {
 

@@ -90,6 +90,28 @@ class RenderTest {
         render.writeToImage();
     }
 
+    @Test
+    public void squreTest(){
+        Scene scene=new Scene();
+        scene.setScreenDistance(100);
+
+        Squre squre=new Squre(
+                new Point3D( -3500, -3500, -1000),
+                new Point3D( -3500,  3500, -2000),
+                new Point3D(  3500,  3500, -2000),
+                new Point3D(  3500, -3500, -1000));
+        squre.setEmmission(Color.red);
+        squre.setShininess(20);
+        scene.addGeometry(squre);
+        ImageWriter imageWriter = new ImageWriter("squre test", 500, 500, 500, 500);
+
+        Render render = new Render(imageWriter, scene);
+
+        render.renderImage();
+        render.writeToImage();
+
+
+    }
 }
 
 

@@ -1,3 +1,4 @@
+/*
 package Testing.Primitives;
 
 import Primitives.Point3D;
@@ -71,4 +72,4 @@ class VectorTest {
 
         assertEquals(-10,vec1.dotProduct(vec2));
     }
-}
+}*/

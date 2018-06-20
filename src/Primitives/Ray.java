@@ -1,4 +1,6 @@
+
 package Primitives;
+
 
 public class Ray {
 
@@ -32,7 +34,7 @@ public class Ray {
     }
 
     public Vector get_direction() {
-        return new Vector(_direction);
+        return new Vector(this._direction);
     }
 
     public void set_direction(Vector _direction) {
@@ -44,3 +46,5 @@ public class Ray {
                 "Vector " + this.get_direction().toString() + ".";
     }
 }
+
+

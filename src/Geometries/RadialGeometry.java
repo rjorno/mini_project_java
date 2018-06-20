@@ -1,18 +1,9 @@
 package Geometries;
 
-import Primitives.Point3D;
-import Primitives.Ray;
-import Primitives.Vector;
-
-import java.util.List;
-
-public class RadialGeometry extends Geometry {
+/*public abstract class RadialGeometry extends Geometry {
 
     protected double _radius;
-    public RadialGeometry(){
-
-        this._radius=0.0;
-    }
+    public RadialGeometry(){ this._radius=0.0;  }
     public RadialGeometry(double radius){
 
         this._radius=radius;
@@ -26,9 +17,23 @@ public class RadialGeometry extends Geometry {
         this._radius=radius;
     }
 
-    public List<Point3D> FindIntersections(Ray ray){
+  *//*  public List<Point3D> FindIntersections(Ray ray){
         return null;
     }
 
-    public Vector getNormal(Point3D point){return null;}
+    public Vector getNormal(Point3D point){return null;}*//*
+}
+*/
+
+
+public abstract class RadialGeometry extends Geometry {
+
+    protected double _radius;
+
+    public RadialGeometry()              { this._radius = 0.0;    }
+    public RadialGeometry(double radius) { this._radius = radius; }
+
+    public double getRadius()              { return _radius;	    }
+    public void   setRadius(double radius) { this._radius = radius; }
+
 }

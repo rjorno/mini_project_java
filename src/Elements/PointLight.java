@@ -2,9 +2,10 @@ package Elements;
 
 import Primitives.*;
 
-import java.awt.*;
+import java.awt.Color;
 
-import static java.lang.Math.pow;
+//import static java.lang.Math.pow;
+
 
 public class PointLight extends Light implements LightSource {
 
@@ -28,7 +29,7 @@ public class PointLight extends Light implements LightSource {
         int blue=this._color.getBlue();
         double d= this._position.distance(point);
 
-        double dilution=1/(_Kc+_Kl*d+_Kq*pow(d,2));
+        double dilution=1/(_Kc+_Kl*d+_Kq*Math.pow(d,2));
         if(dilution>1)dilution=1;
         return new Color((int)(red*dilution),(int)(green*dilution),(int)(blue*dilution));
 

@@ -22,7 +22,7 @@ class RecursiveTest {
 
         Scene scene = new Scene();
         scene.setScreenDistance(300);
-      //  scene.setCamera(new Camera(new Point3D(0,0,0),new Vector(1,0,0),new Vector(0,0,-1)));
+
         Sphere sphere = new Sphere(500, new Point3D(0.0, 0.0, -1000));
         sphere.setShininess(20);
         sphere.setEmmission(new Color(0, 0, 100));
