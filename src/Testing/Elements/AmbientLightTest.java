@@ -1,3 +1,4 @@
+/*
 package Testing.Elements;
 
 import Elements.AmbientLight;
@@ -14,4 +15,4 @@ class AmbientLightTest {
         AmbientLight ambientLight=new AmbientLight(63,209,91);
         Color color =ambientLight.getIntensity();
     }
-}
+}*/

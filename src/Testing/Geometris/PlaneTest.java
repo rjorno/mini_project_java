@@ -1,3 +1,4 @@
+/*
 package testing;
 
 import Elements.Camera;
@@ -52,3 +53,4 @@ class PlaneTest {
         }
     }
 }
+*/

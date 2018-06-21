@@ -1,3 +1,4 @@
+/*
 package Testing.Elements;
 
 import Elements.AmbientLight;
@@ -217,12 +218,14 @@ class LightTest {
 
 
         // Triangle triangle2 = new Triangle(new Point3D(  3500,  3500, -2000), new Point3D( -3500,  3500, -1000), new Point3D( -3500, -3500, -1000));
-     /*   Triangle triangle = new Triangle(new Point3D(  -3600,  -3600, -1000), new Point3D( 3600, -3600, -1000), new Point3D(  0.0, 3600, -2000));
+     */
+/*   Triangle triangle = new Triangle(new Point3D(  -3600,  -3600, -1000), new Point3D( 3600, -3600, -1000), new Point3D(  0.0, 3600, -2000));
         scene.addGeometry(triangle);
         Sphere sphere = new Sphere(500,new Point3D(0.0,0.0,-1000));
         sphere.setEmmission(new Color(0,0,100));
         sphere.setShininess(20);
-        scene.addGeometry(sphere);*/
+        scene.addGeometry(sphere);*//*
+
 
         scene.addLight(new SpotLight(new Color(255, 100, 100), new Point3D(0, 500, -100), new Vector(0, -5, -1), 0, 0.000001, 0.0000005));
 
@@ -233,4 +236,4 @@ class LightTest {
         render.renderImage();
         render.writeToImage();
     }
-}
+}*/

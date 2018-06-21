@@ -25,6 +25,7 @@ Vector temp2 = new Vector(3,4,5);
     @Test
     void distance() {
         assertEquals(0,temp.distance(temp));
-        assertEquals(30.49,temp.distance(temp2.get_head()),0.05);
+        assertEquals(30.49,temp.distance(temp2.getHead()),0.05);
     }
-}*/
+}
+*/

@@ -1,3 +1,4 @@
+/*
 package Testing.Geometris;
 
 import Elements.Camera;
@@ -53,4 +54,4 @@ class SphereTest {
        }
 
     }
-}
+}*/

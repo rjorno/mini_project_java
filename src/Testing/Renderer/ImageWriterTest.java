@@ -1,3 +1,4 @@
+/*
 package Testing.Renderer;
 
 import Renderer.ImageWriter;
@@ -36,4 +37,4 @@ class ImageWriterTest {
         }
         imageWriter.writeToimage();
     }
-}
+}*/

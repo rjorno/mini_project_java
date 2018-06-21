@@ -1,7 +1,9 @@
+/*
 package Testing.Geometris;
 
 import Elements.Camera;
 import Elements.DirectionalLight;
+import Elements.PointLight;
 import Elements.SpotLight;
 import Geometries.Sphere;
 import Geometries.Squre;
@@ -229,20 +231,18 @@ class SqureTest {
                 new Point3D(-8000, -4000, -8000));
         wall1.setEmmission(new Color(95, 93, 110));
         scene.addGeometry(wall2);
-        /*Squre watch=new Squre(
-                new Point3D(-8000, 500, -3500),
-                new Point3D(-8000, 500, -4500),
-                new Point3D(-8000, -500, -4500),
-                new Point3D(-8000, -500, -3500));
-        wall1.setEmmission(new Color(131, 139, 122));
-        scene.addGeometry(watch);
-        Sphere m=new Sphere(200,new Point3D(-8100,0,-4200));
-        m.setShininess(40);
-        m.setEmmission(new Color(0,0,100));
-        scene.addGeometry(m);*/
+        Squre wall3=new Squre(
+                new Point3D(-8000, 4000, 1000),
+                new Point3D(-8000, 4000, -8000),
+                new Point3D(8000, 4000, -8000),
+                new Point3D(8000, 4000, 1000));
+        wall1.setEmmission(new Color(95, 93, 110));
+        scene.addGeometry(wall3);
+
         //        scene.addLight(new SpotLight(new Color(255, 100, 100), new Point3D(200, 200, -1100),
-//                new Vector(-2, -2, -3), 0, 0.000001, 0.0000005));
+        //        new Vector(-2, -2, -3), 0, 0.000001, 0.0000005));
         scene.addLight(new DirectionalLight(new Color(200, 188, 105), new Vector(-10, -5, -3)));
+        scene.addLight(new PointLight(new Color(255, 100, 100),new Point3D(0,4500,-2500),0, 0.000001, 0.0000005));
         ImageWriter imageWriter = new ImageWriter("cube test 2", 500, 500, 500, 500);
 
         Render render = new Render(imageWriter, scene);
@@ -252,3 +252,4 @@ class SqureTest {
     }
 
 }
+*/
